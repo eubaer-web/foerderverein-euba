@@ -759,9 +759,12 @@
   function showTab(id, btn) {
     document.querySelectorAll('.tab-section').forEach(s => s.classList.remove('active'));
     document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.mobile-menu-inner button').forEach(b => b.classList.remove('active'));
     const section = document.getElementById(id);
     if (section) section.classList.add('active');
     if (btn) btn.classList.add('active');
+    const mobileBtn = document.querySelector(`.mobile-menu-inner button[onclick*="'${id}'"]`);
+    if (mobileBtn) mobileBtn.classList.add('active');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
