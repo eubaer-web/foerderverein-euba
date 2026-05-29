@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kinder- und Jugendförderung Euba e.V.</title>
+  <meta name="description" content="Kinder- und Jugendförderung Euba e.V. – Wir unterstützen Kinder und Jugendliche in Euba." />
+  <style>
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gruen:      #2e7d32;
+      --gruen-hell: #43a047;
+      --gruen-bg:   #e8f5e9;
+      --gelb:       #f9a825;
+      --gelb-hell:  #fff8e1;
+      --text:       #1a1a1a;
+      --text-mid:   #444;
+      --text-light: #666;
+      --border:     #d0e4d1;
+      --weiss:      #ffffff;
+      --card-bg:    #f7faf7;
+      --radius:     12px;
+      --shadow:     0 2px 12px rgba(0,0,0,.08);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: var(--text);
+      background: #f4f7f4;
+      min-height: 100vh;
+      line-height: 1.65;
+    }
+
+    /* ===== HEADER ===== */
+    header {
+      background: var(--weiss);
+      border-bottom: 3px solid var(--gruen-hell);
+      padding: 24px 20px 20px;
+      text-align: center;
+    }
+
+    .header-inner { max-width: 800px; margin: 0 auto; }
+
+    .logo-circle {
+      width: 140px; height: 140px;
+      display: block;
+      margin: 0 auto 12px;
+      object-fit: contain;
+    }
+
+    header h1 {
+      font-size: clamp(1.2rem, 4vw, 1.8rem);
+      font-weight: 800;
+      letter-spacing: -.01em;
+      line-height: 1.2;
+      color: #1a3a1e;
+    }
+
+    header p.sub {
+      margin-top: 6px;
+      font-size: .92rem;
+      color: var(--text-light);
+      font-weight: 500;
+    }
+
+    /* ===== NAVIGATION ===== */
+    nav {
+      background: var(--weiss);
+      box-shadow: 0 2px 8px rgba(0,0,0,.1);
+      position: sticky; top: 0; z-index: 100;
+    }
+
+    .nav-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+    }
+    @media (max-width: 600px) {
+      .nav-inner { justify-content: flex-start; }
+    }
+    .nav-inner::-webkit-scrollbar { display: none; }
+
+    nav button {
+      flex: 0 0 auto;
+      padding: 14px 20px;
+      border: none;
+      background: none;
+      cursor: pointer;
+      font-size: .93rem;
+      font-weight: 600;
+      color: var(--text-mid);
+      position: relative;
+      white-space: nowrap;
+      transition: color .2s;
+    }
+    nav button::after {
+      content: "";
+      position: absolute; bottom: 0; left: 10%; right: 10%; height: 3px;
+      background: var(--gruen-hell);
+      border-radius: 3px 3px 0 0;
+      transform: scaleX(0);
+      transition: transform .2s;
+    }
+    nav button:hover { color: var(--gruen); }
+    nav button.active { color: var(--gruen); }
+    nav button.active::after { transform: scaleX(1); }
+
+    /* ===== MAIN ===== */
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 28px 16px 60px;
+    }
+
+    .tab-section { display: none; }
+    .tab-section.active { display: block; }
+
+    /* ===== CARDS ===== */
+    .card {
+      background: var(--weiss);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 28px;
+      margin-bottom: 22px;
+    }
+
+    .card h2 {
+      font-size: 1.25rem;
+      color: var(--gruen);
+      margin-bottom: 14px;
+    }
+
+    .card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin: 16px 0 8px;
+    }
+
+    .card p { color: var(--text-mid); margin-bottom: 10px; font-size: .97rem; }
+    .card p:last-child { margin-bottom: 0; }
+
+    /* ===== NEWS / AKTUELLES ===== */
+    .news-date {
+      display: inline-block;
+      background: var(--gruen-bg);
+      color: var(--gruen);
+      font-size: .8rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 20px;
+      margin-bottom: 10px;
+      letter-spacing: .03em;
+      text-transform: uppercase;
+    }
+
+    .news-badge {
+      display: inline-block;
+      background: var(--gelb);
+      color: #5d4037;
+      font-size: .75rem;
+      font-weight: 700;
+      padding: 2px 9px;
+      border-radius: 20px;
+      margin-left: 8px;
+      vertical-align: middle;
+      letter-spacing: .04em;
+    }
+
+    .protokoll-box {
+      background: var(--gruen-bg);
+      border-left: 4px solid var(--gruen-hell);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 16px 20px;
+      margin-top: 16px;
+    }
+    .protokoll-box p { color: var(--text-mid); font-size: .9rem; }
+
+    /* ===== TEAM ===== */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 16px;
+      margin-top: 8px;
+    }
+
+    .team-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 16px;
+      text-align: center;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .team-card:hover { transform: translateY(-3px); box-shadow: 0 6px 18px rgba(0,0,0,.1); }
+
+    .team-avatar {
+      width: 64px; height: 64px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gruen-hell), var(--gruen));
+      color: var(--weiss);
+      font-size: 1.2rem;
+      font-weight: 800;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 12px;
+    }
+
+    .team-name {
+      font-weight: 700;
+      font-size: .97rem;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+    .team-role {
+      font-size: .82rem;
+      color: var(--text-light);
+      font-weight: 500;
+    }
+
+    /* ===== DOKUMENTE ===== */
+    .doc-list { list-style: none; margin-top: 6px; }
+    .doc-list li {
+      display: flex; align-items: center; gap: 14px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .doc-list li:last-child { border-bottom: none; }
+
+    .doc-icon {
+      width: 44px; height: 44px; flex-shrink: 0;
+      background: var(--gruen-bg);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .7rem;
+      font-weight: 800;
+      color: var(--gruen);
+      letter-spacing: .03em;
+    }
+
+    .doc-info { flex: 1; }
+    .doc-name { font-weight: 700; font-size: .97rem; margin-bottom: 2px; }
+    .doc-meta { font-size: .82rem; color: var(--text-light); }
+
+    .doc-btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 8px 16px;
+      background: var(--gruen);
+      color: var(--weiss);
+      border-radius: 8px;
+      font-size: .84rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background .2s;
+      flex-shrink: 0;
+    }
+    .doc-btn:hover { background: var(--gruen-hell); }
+
+    /* ===== KONTAKT ===== */
+    .kontakt-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 16px;
+      margin-top: 6px;
+    }
+
+    .kontakt-item {
+      display: flex; align-items: flex-start; gap: 14px;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px;
+    }
+
+    .kontakt-icon {
+      width: 44px; height: 44px; flex-shrink: 0;
+      background: var(--gruen-bg);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .7rem;
+      font-weight: 800;
+      color: var(--gruen);
+      letter-spacing: .03em;
+      text-align: center;
+    }
+
+    .kontakt-label { font-size: .8rem; color: var(--text-light); font-weight: 600; text-transform: uppercase; letter-spacing: .04em; margin-bottom: 3px; }
+    .kontakt-value { font-size: .97rem; font-weight: 600; color: var(--text); }
+    .kontakt-value a { color: var(--gruen); text-decoration: none; }
+    .kontakt-value a:hover { text-decoration: underline; }
+
+    .mitglied-box {
+      background: linear-gradient(135deg, var(--gruen-bg) 0%, var(--gelb-hell) 100%);
+      border: 2px solid var(--gruen-hell);
+      border-radius: var(--radius);
+      padding: 24px 28px;
+      margin-top: 6px;
+      text-align: center;
+    }
+    .mitglied-box h3 { color: var(--gruen); font-size: 1.1rem; margin-bottom: 8px; }
+    .mitglied-box p { font-size: .95rem; color: var(--text-mid); }
+    .mitglied-box a:not(.btn-primary) { color: var(--gruen); font-weight: 700; }
+
+    /* ===== HERO START ===== */
+    .hero {
+      background: linear-gradient(135deg, var(--gruen-bg), var(--gelb-hell));
+      border-radius: var(--radius);
+      padding: 32px 28px;
+      margin-bottom: 22px;
+      border: 1px solid var(--border);
+    }
+    .hero h2 { font-size: 1.4rem; color: var(--gruen); margin-bottom: 10px; }
+    .hero p { color: var(--text-mid); font-size: .97rem; margin-bottom: 10px; }
+    .hero p:last-child { margin-bottom: 0; }
+
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--gruen);
+      color: var(--weiss);
+      padding: 11px 22px;
+      border-radius: 8px;
+      font-size: .95rem;
+      font-weight: 700;
+      text-decoration: none;
+      margin-top: 14px;
+      transition: background .2s;
+      border: none; cursor: pointer;
+    }
+    .btn-primary:hover { background: var(--gruen-hell); }
+
+    /* ===== FOOTER ===== */
+    footer {
+      text-align: center;
+      padding: 24px 16px;
+      font-size: .82rem;
+      color: var(--text-light);
+      background: var(--weiss);
+      border-top: 1px solid var(--border);
+      margin-top: 20px;
+    }
+    footer a { color: var(--gruen); text-decoration: none; }
+    .impressum-hidden { display: none; }
+
+    /* ===== DIVIDER ===== */
+    .divider {
+      height: 1px; background: var(--border); margin: 20px 0;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 500px) {
+      .card { padding: 20px 16px; }
+      .hero { padding: 22px 18px; }
+      nav button { padding: 13px 15px; font-size: .88rem; }
+      .doc-list li { flex-wrap: wrap; }
+      .doc-btn { margin-top: 8px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <img src="logo-neu.jpeg" alt="Logo Kinder- und Jugendförderung Euba" class="logo-circle"/>
+    <h1>Kinder- und Jugendförderung Euba e.V.</h1>
+    <p class="sub">Kinder- &amp; Jugendförderung · Euba / Chemnitz</p>
+  </div>
+</header>
+
+<!-- NAVIGATION -->
+<nav aria-label="Hauptnavigation">
+  <div class="nav-inner">
+    <button class="active" onclick="showTab('start', this)">Start</button>
+    <button onclick="showTab('aktuelles', this)">Aktuelles</button>
+    <button onclick="showTab('team', this)">Team</button>
+    <button onclick="showTab('dokumente', this)">Dokumente</button>
+    <button onclick="showTab('kontakt', this)">Kontakt</button>
+  </div>
+</nav>
+
+<!-- MAIN CONTENT -->
+<main>
+
+  <!-- ====== START ====== -->
+  <section id="start" class="tab-section active">
+    <div class="hero">
+      <h2>Neustart im Förderverein!</h2>
+      <p>
+        Nach einer schwierigen Phase freuen wir uns: Die Kinder- und Jugendförderung Euba ist zurück –
+        mit einem neuen Vorstand und frischer Energie für unsere Kinder und die Schule.
+      </p>
+      <p>
+        Gemeinsam gestalten wir das Schulleben in Euba und freuen uns über jede Unterstützung
+        aus der Gemeinschaft.
+      </p>
+      <button class="btn-primary" onclick="showTab('aktuelles', document.querySelector('nav button:nth-child(2)'))">
+        Mehr erfahren &rarr;
+      </button>
+    </div>
+
+    <div class="card">
+      <h2>Unser Ziel</h2>
+      <p>
+        Wir unterstützen Kindergarten und Grundschule Euba und fördern das schulische und außerschulische
+        Leben der Kinder und Jugendlichen in unserem Ort. Ob Ausflüge, Materialien oder besondere
+        Projekte – der Förderverein macht es möglich.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>Mitmachen</h2>
+      <p>
+        Wer den Verein und die Kinder unterstützen möchte, ist bei uns genau richtig.
+      </p>
+      <button class="btn-primary" onclick="showTab('kontakt', document.querySelector('nav button:nth-child(5)'))">
+        Kontakt aufnehmen &rarr;
+      </button>
+    </div>
+  </section>
+
+  <!-- ====== AKTUELLES ====== -->
+  <section id="aktuelles" class="tab-section">
+
+    <div class="card">
+      <span class="news-date">Januar 2026</span>
+      <span class="news-badge">NEU</span>
+      <h2 style="margin-top:10px;">Neustart im Förderverein GS Euba e.V.</h2>
+      <p>
+        Nachdem der Förderverein bereits in Liquidation war, konnte in einer Mitgliederversammlung
+        erfreulicherweise eine neue Lösung gefunden werden. Vier Mitglieder aus dem Ort haben sich
+        bereit erklärt, Verantwortung zu übernehmen und den Verein weiterzuführen.
+      </p>
+      <p>
+        Den Vorsitz übernimmt <strong>Marcel Löwenberg</strong>, als stellvertretender Vorsitzender
+        unterstützt <strong>Michel Arnold</strong>. Die Kassenführung übernehmen
+        <strong>Francie Meiser</strong> und <strong>Roy Teubner</strong>.
+      </p>
+      <p>
+        Ein besonderer Dank gilt <strong>Arnd Heidemüller</strong> sowie allen weiteren Beteiligten,
+        die sich in dieser schwierigen Phase für den Erhalt des Vereins eingesetzt haben.
+      </p>
+      <p>
+        Der Förderverein freut sich über diesen Neustart und blickt zuversichtlich in die Zukunft.
+        Neue Mitglieder sind jederzeit herzlich willkommen. Bei Interesse freuen wir uns über eine
+        Nachricht per E-Mail an
+        <a href="mailto:fv-gs-euba@goldmail.de" style="color:var(--gruen);font-weight:600;">fv-gs-euba@goldmail.de</a>.
+      </p>
+
+      <div class="protokoll-box">
+        <p>
+          <strong>Das vollständige Protokoll</strong> der außerordentlichen Mitgliederversammlung
+          vom 06. Januar 2026 steht im Bereich
+          <a href="#" onclick="showTab('dokumente', document.querySelector('nav button:nth-child(4)')); return false;"
+             style="color:var(--gruen);font-weight:600;">Dokumente</a>
+          zum Download bereit.
+        </p>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ====== TEAM ====== -->
+  <section id="team" class="tab-section">
+
+    <div class="card">
+      <h2>Unser Vorstand</h2>
+      <p style="margin-bottom:20px;">
+        Seit Januar 2026 führt ein neu gewählter Vorstand den Verein. Alle vier wurden einstimmig
+        von den Mitgliedern gewählt.
+      </p>
+
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="team-avatar">ML</div>
+          <div class="team-name">Marcel Löwenberg</div>
+          <div class="team-role">Vorsitzender</div>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar">MA</div>
+          <div class="team-name">Michel Arnold</div>
+          <div class="team-role">Stellv. Vorsitzender</div>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar">FM</div>
+          <div class="team-name">Francie Meiser</div>
+          <div class="team-role">Kassenprüferin</div>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar">RT</div>
+          <div class="team-name">Roy Teubner</div>
+          <div class="team-role">Kassenprüfer</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="card">
+      <h2>Mitglieder</h2>
+      <p style="margin-bottom:16px;">Ca. 60 Mitglieder zählen wir schon — Platz 61 ist noch frei! Mach mit und unterstütze gemeinsam mit uns Kinder und Jugendliche in Euba.</p>
+      <a href="aufnahmeantrag.docx" class="btn-primary" download>
+        Mitgliedsantrag herunterladen
+      </a>
+    </div>
+
+    <div class="card">
+      <h2>Dank an Arnd Heidemüller</h2>
+      <p>
+        Ein besonderer Dank gilt <strong>Arnd Heidemüller</strong>, der den Verein als Liquidator
+        durch eine schwierige Phase geführt und mit großem Einsatz den Neustart ermöglicht hat.
+        Die Mitglieder haben ihm einstimmig Entlastung erteilt.
+      </p>
+    </div>
+
+  </section>
+
+  <!-- ====== DOKUMENTE ====== -->
+  <section id="dokumente" class="tab-section">
+
+    <div class="card">
+      <h2>Vereinsdokumente</h2>
+      <p style="margin-bottom: 16px;">
+        Hier finden Sie die offiziellen Dokumente des Fördervereins zum Download.
+      </p>
+
+      <ul class="doc-list">
+        <li>
+          <div class="doc-icon">DOC</div>
+          <div class="doc-info">
+            <div class="doc-name">Protokoll der Mitgliederversammlung</div>
+            <div class="doc-meta">06. Januar 2026 · Außerordentliche Mitgliederversammlung</div>
+          </div>
+          <a href="2026-01-06_Mitgliederversammlung_Protokoll.doc" class="doc-btn" download>
+            Download
+          </a>
+        </li>
+        <li>
+          <div class="doc-icon">PDF</div>
+          <div class="doc-info">
+            <div class="doc-name">Vereinssatzung</div>
+            <div class="doc-meta">Satzung des Fördervereins der Grundschule Euba e.V.</div>
+          </div>
+          <a href="vereinssatzung.pdf" class="doc-btn" download>
+            Download
+          </a>
+        </li>
+        <li>
+          <div class="doc-icon">DOC</div>
+          <div class="doc-info">
+            <div class="doc-name">Aufnahmeantrag</div>
+            <div class="doc-meta">Mitgliedsantrag inkl. SEPA-Lastschriftmandat</div>
+          </div>
+          <a href="aufnahmeantrag.docx" class="doc-btn" download>
+            Download
+          </a>
+        </li>
+      </ul>
+    </div>
+
+  </section>
+
+  <!-- ====== KONTAKT ====== -->
+  <section id="kontakt" class="tab-section">
+
+    <div class="card">
+      <h2>Kontakt</h2>
+
+      <div class="kontakt-grid">
+        <div class="kontakt-item">
+          <div class="kontakt-icon">Mail</div>
+          <div>
+            <div class="kontakt-label">E-Mail</div>
+            <div class="kontakt-value">
+              <a href="mailto:fv-gs-euba@goldmail.de">fv-gs-euba@goldmail.de</a>
+            </div>
+          </div>
+        </div>
+        <div class="kontakt-item">
+          <div class="kontakt-icon">Post</div>
+          <div>
+            <div class="kontakt-label">Postanschrift</div>
+            <div class="kontakt-value">Kinder- und Jugendförderung Euba e.V.<br>Hauptstraße 50 c<br>09128 Chemnitz</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mitglied-box">
+      <h3>Werden Sie Mitglied!</h3>
+      <p>
+        Neue Mitglieder sind jederzeit herzlich willkommen. Wer Kinder und Jugendliche
+        in Euba unterstützen möchte, ist bei uns genau richtig.<br><br>
+        Einfach eine E-Mail schreiben an
+        <a href="mailto:fv-gs-euba@goldmail.de">fv-gs-euba@goldmail.de</a> –
+        wir melden uns gerne zurück!
+      </p>
+      <a href="aufnahmeantrag.docx" class="btn-primary" download style="margin-top:16px; display:inline-flex;">
+        Aufnahmeantrag herunterladen
+      </a>
+    </div>
+
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 Kinder- und Jugendförderung Euba e.V. ·
+    <a href="mailto:fv-gs-euba@goldmail.de">fv-gs-euba@goldmail.de</a> ·
+    Hauptstraße 50 c, 09128 Chemnitz
+  </p>
+  <p style="margin-top:8px;">
+    <a href="#" onclick="toggleImpressum(); return false;" id="impressum-link">Impressum anzeigen</a>
+  </p>
+
+  <div id="impressum-box" style="display:none; margin-top:16px; text-align:left; background:var(--card-bg); border-radius:var(--radius); padding:22px 24px; max-width:600px; margin-left:auto; margin-right:auto; font-size:.9rem; color:var(--text-mid);">
+    <h3 style="color:var(--gruen); font-size:1rem; margin-bottom:12px;">Impressum</h3>
+
+    <p style="font-weight:700; color:var(--text); margin-bottom:2px;">Angaben gemäß § 5 TMG</p>
+    <p>Kinder- und Jugendförderung Euba e.V.<br>Hauptstraße 50 c<br>09128 Chemnitz</p>
+
+    <p style="font-weight:700; color:var(--text); margin:10px 0 2px;">Vertreten durch</p>
+    <p>Marcel Löwenberg (Vorsitzender)</p>
+
+    <p style="font-weight:700; color:var(--text); margin:10px 0 2px;">Vereinsregister</p>
+    <p>Registergericht: Amtsgericht Chemnitz<br>Registernummer: VR 2122</p>
+
+    <p style="font-weight:700; color:var(--text); margin:10px 0 2px;">Kontakt</p>
+    <p><a href="mailto:fv-gs-euba@goldmail.de" style="color:var(--gruen);">fv-gs-euba@goldmail.de</a></p>
+
+    <p style="font-weight:700; color:var(--text); margin:10px 0 2px;">Inhaltlich verantwortlich</p>
+    <p>Marcel Löwenberg, Hauptstraße 50 c, 09128 Chemnitz</p>
+
+    <p style="margin-top:12px; font-size:.82rem; color:var(--text-light);">Trotz sorgfältiger inhaltlicher Kontrolle übernehmen wir keine Haftung für die Inhalte externer Links. Für den Inhalt der verlinkten Seiten sind ausschließlich deren Betreiber verantwortlich.</p>
+  </div>
+</footer>
+
+<script>
+  function toggleImpressum() {
+    const box = document.getElementById('impressum-box');
+    const link = document.getElementById('impressum-link');
+    if (box.style.display === 'none') {
+      box.style.display = 'block';
+      link.textContent = 'Impressum schließen';
+      setTimeout(() => box.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
+    } else {
+      box.style.display = 'none';
+      link.textContent = 'Impressum anzeigen';
+    }
+  }
+
+  function showTab(id, btn) {
+    document.querySelectorAll('.tab-section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+    const section = document.getElementById(id);
+    if (section) section.classList.add('active');
+    if (btn) btn.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  window.addEventListener('hashchange', () => {
+    const hash = location.hash.replace('#', '') || 'start';
+    const btn = document.querySelector(`nav button[onclick*="'${hash}'"]`);
+    showTab(hash, btn);
+  });
+
+  const initHash = location.hash.replace('#', '');
+  if (initHash && document.getElementById(initHash)) {
+    const btn = document.querySelector(`nav button[onclick*="'${initHash}'"]`);
+    showTab(initHash, btn);
+  }
+</script>
+
+</body>
+</html>
