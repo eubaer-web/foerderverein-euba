@@ -84,7 +84,7 @@
       -webkit-overflow-scrolling: touch;
     }
     @media (max-width: 600px) {
-      .nav-inner { justify-content: flex-start; }
+      .nav-inner { justify-content: center; flex-wrap: wrap; }
     }
     .nav-inner::-webkit-scrollbar { display: none; }
 
@@ -357,9 +357,10 @@
     @media (max-width: 500px) {
       .card { padding: 20px 16px; }
       .hero { padding: 22px 18px; }
-      nav button { padding: 13px 15px; font-size: .88rem; }
-      .doc-list li { flex-wrap: wrap; }
-      .doc-btn { margin-top: 8px; }
+      nav button { padding: 10px 12px; font-size: .84rem; }
+      /* Dokumente: Button immer unter dem Text */
+      .doc-list li { flex-direction: column; align-items: flex-start; }
+      .doc-btn { margin-top: 10px; width: 100%; text-align: center; justify-content: center; }
     }
   </style>
 </head>
