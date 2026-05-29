@@ -81,18 +81,7 @@
       margin: 0 auto;
       display: flex;
       justify-content: center;
-      overflow-x: auto;
-      scrollbar-width: none;
-      -webkit-overflow-scrolling: touch;
     }
-    @media (max-width: 600px) {
-      .nav-inner { justify-content: center; flex-wrap: wrap; }
-      .nav-break { flex-basis: 100%; height: 0; }
-    }
-    @media (min-width: 601px) {
-      .nav-break { display: none; }
-    }
-    .nav-inner::-webkit-scrollbar { display: none; }
 
     nav button {
       flex: 0 0 auto;
@@ -118,6 +107,68 @@
     nav button:hover { color: var(--gruen); }
     nav button.active { color: var(--gruen); }
     nav button.active::after { transform: scaleX(1); }
+
+    /* ===== HAMBURGER ===== */
+    .hamburger {
+      display: none;
+      position: fixed; top: 12px; right: 16px; z-index: 200;
+      background: var(--gruen);
+      border: none; border-radius: 8px;
+      width: 44px; height: 44px;
+      cursor: pointer;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      box-shadow: 0 2px 8px rgba(0,0,0,.2);
+    }
+    .hamburger span {
+      display: block; width: 22px; height: 2px;
+      background: var(--weiss); border-radius: 2px;
+      transition: all .25s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none;
+      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,.5);
+      z-index: 150;
+    }
+    .mobile-menu.open { display: block; }
+    .mobile-menu-inner {
+      position: absolute; top: 0; right: 0;
+      width: 70%; max-width: 280px; height: 100%;
+      background: var(--weiss);
+      padding: 80px 0 30px;
+      box-shadow: -4px 0 20px rgba(0,0,0,.15);
+      display: flex; flex-direction: column;
+    }
+    .mobile-menu-inner button {
+      border: none; background: none; cursor: pointer;
+      padding: 16px 28px;
+      font-size: 1rem; font-weight: 600;
+      color: var(--text-mid);
+      text-align: left;
+      border-left: 4px solid transparent;
+      transition: all .2s;
+    }
+    .mobile-menu-inner button:hover,
+    .mobile-menu-inner button.active {
+      color: var(--gruen);
+      border-left-color: var(--gruen-hell);
+      background: var(--gruen-bg);
+    }
+
+    @media (max-width: 600px) {
+      .nav-inner { display: none; }
+      .hamburger { display: flex; }
+    }
+    @media (min-width: 601px) {
+      .nav-break { display: none; }
+    }
 
     /* ===== MAIN ===== */
     main {
@@ -381,13 +432,28 @@
   </div>
 </header>
 
-<!-- NAVIGATION -->
+<!-- HAMBURGER BUTTON -->
+<button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menü öffnen">
+  <span></span><span></span><span></span>
+</button>
+
+<!-- MOBILES MENÜ -->
+<div class="mobile-menu" id="mobileMenu" onclick="closeMenuOnBackdrop(event)">
+  <div class="mobile-menu-inner">
+    <button class="active" onclick="showTabMobile('start')">Start</button>
+    <button onclick="showTabMobile('aktuelles')">Aktuelles</button>
+    <button onclick="showTabMobile('team')">Team</button>
+    <button onclick="showTabMobile('dokumente')">Dokumente</button>
+    <button onclick="showTabMobile('kontakt')">Kontakt</button>
+  </div>
+</div>
+
+<!-- NAVIGATION (Desktop) -->
 <nav aria-label="Hauptnavigation">
   <div class="nav-inner">
     <button class="active" onclick="showTab('start', this)">Start</button>
     <button onclick="showTab('aktuelles', this)">Aktuelles</button>
     <button onclick="showTab('team', this)">Team</button>
-    <div class="nav-break"></div>
     <button onclick="showTab('dokumente', this)">Dokumente</button>
     <button onclick="showTab('kontakt', this)">Kontakt</button>
   </div>
@@ -650,6 +716,32 @@
 </footer>
 
 <script>
+  function toggleMenu() {
+    document.getElementById('hamburger').classList.toggle('open');
+    document.getElementById('mobileMenu').classList.toggle('open');
+  }
+
+  function closeMenuOnBackdrop(e) {
+    if (e.target === document.getElementById('mobileMenu')) toggleMenu();
+  }
+
+  function showTabMobile(id) {
+    // Tab wechseln
+    document.querySelectorAll('.tab-section').forEach(s => s.classList.remove('active'));
+    const section = document.getElementById(id);
+    if (section) section.classList.add('active');
+    // Desktop-Nav sync
+    document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+    const desktopBtn = document.querySelector(`nav button[onclick*="'${id}'"]`);
+    if (desktopBtn) desktopBtn.classList.add('active');
+    // Mobile-Nav sync
+    document.querySelectorAll('.mobile-menu-inner button').forEach(b => b.classList.remove('active'));
+    event.target.classList.add('active');
+    // Menü schließen
+    toggleMenu();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
   function toggleImpressum() {
     const box = document.getElementById('impressum-box');
     const link = document.getElementById('impressum-link');
