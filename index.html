@@ -692,6 +692,8 @@
   </p>
   <p style="margin-top:8px;">
     <a href="#" onclick="toggleImpressum(); return false;" id="impressum-link">Impressum anzeigen</a>
+    &nbsp;·&nbsp;
+    <a href="#" onclick="toggleDatenschutz(); return false;" id="datenschutz-link">Datenschutz anzeigen</a>
   </p>
 
   <div id="impressum-box" style="display:none; margin-top:16px; text-align:left; background:var(--card-bg); border-radius:var(--radius); padding:22px 24px; max-width:600px; margin-left:auto; margin-right:auto; font-size:.9rem; color:var(--text-mid);">
@@ -714,6 +716,29 @@
 
     <p style="margin-top:12px; font-size:.82rem; color:var(--text-light);">Trotz sorgfältiger inhaltlicher Kontrolle übernehmen wir keine Haftung für die Inhalte externer Links. Für den Inhalt der verlinkten Seiten sind ausschließlich deren Betreiber verantwortlich.</p>
   </div>
+  <div id="datenschutz-box" style="display:none; margin-top:16px; text-align:left; background:var(--card-bg); border-radius:var(--radius); padding:22px 24px; max-width:600px; margin-left:auto; margin-right:auto; font-size:.9rem; color:var(--text-mid);">
+    <h3 style="color:var(--gruen); font-size:1rem; margin-bottom:12px;">Datenschutzerklärung</h3>
+
+    <p style="font-weight:700; color:var(--text); margin-bottom:2px;">Verantwortlicher</p>
+    <p>Marcel Löwenberg<br>Förderverein der Grundschule Euba e.V.<br>Hauptstraße 50 c, 09128 Chemnitz<br>
+    <a href="mailto:fv-gs-euba@goldmail.de" style="color:var(--gruen);">fv-gs-euba@goldmail.de</a></p>
+
+    <p style="font-weight:700; color:var(--text); margin:10px 0 2px;">Hosting</p>
+    <p>Diese Website wird über <strong>GitHub Pages</strong> (GitHub Inc., 88 Colin P Kelly Jr St, San Francisco, CA 94107, USA) gehostet. GitHub kann beim Aufruf der Seite Server-Logs speichern, die technische Daten wie IP-Adresse, Browsertyp und Zugriffszeit enthalten. Weitere Informationen: <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" style="color:var(--gruen);">GitHub Datenschutzerklärung</a>.</p>
+
+    <p style="font-weight:700; color:var(--text); margin:10px 0 2px;">Cookies & Tracking</p>
+    <p>Diese Website verwendet keine Cookies und keine Tracking- oder Analyse-Tools. Es werden keine personenbezogenen Daten durch uns erhoben oder gespeichert.</p>
+
+    <p style="font-weight:700; color:var(--text); margin:10px 0 2px;">Kontaktaufnahme per E-Mail</p>
+    <p>Wenn Sie uns per E-Mail kontaktieren, werden Ihre Angaben zur Bearbeitung der Anfrage gespeichert. Eine Weitergabe an Dritte findet nicht statt. Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO.</p>
+
+    <p style="font-weight:700; color:var(--text); margin:10px 0 2px;">Ihre Rechte</p>
+    <p>Sie haben das Recht auf Auskunft, Berichtigung, Löschung und Einschränkung der Verarbeitung Ihrer Daten sowie das Recht auf Datenübertragbarkeit. Wenden Sie sich hierzu an: <a href="mailto:fv-gs-euba@goldmail.de" style="color:var(--gruen);">fv-gs-euba@goldmail.de</a></p>
+
+    <p style="font-weight:700; color:var(--text); margin:10px 0 2px;">Beschwerderecht</p>
+    <p>Sie haben das Recht, sich bei der zuständigen Datenschutzbehörde zu beschweren. In Sachsen: <a href="https://www.saechsdsb.de" target="_blank" style="color:var(--gruen);">Sächsischer Datenschutzbeauftragter</a>.</p>
+  </div>
+
 </footer>
 
 <script>
@@ -741,6 +766,19 @@
     // Menü schließen
     toggleMenu();
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function toggleDatenschutz() {
+    const box = document.getElementById('datenschutz-box');
+    const link = document.getElementById('datenschutz-link');
+    if (box.style.display === 'none') {
+      box.style.display = 'block';
+      link.textContent = 'Datenschutz schließen';
+      setTimeout(() => box.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
+    } else {
+      box.style.display = 'none';
+      link.textContent = 'Datenschutz anzeigen';
+    }
   }
 
   function toggleImpressum() {
