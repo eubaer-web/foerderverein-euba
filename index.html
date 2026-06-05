@@ -693,7 +693,7 @@
   <p style="margin-top:8px;">
     <a href="#" onclick="toggleImpressum(); return false;" id="impressum-link">Impressum anzeigen</a>
     &nbsp;·&nbsp;
-    <a href="#" onclick="toggleDatenschutz(); return false;" id="datenschutz-link">Datenschutz anzeigen</a>
+    <a href="#" onclick="toggleDatenschutz(); return false;" id="datenschutz-link">Datenschutzerklärung anzeigen</a>
   </p>
 
   <div id="impressum-box" style="display:none; margin-top:16px; text-align:left; background:var(--card-bg); border-radius:var(--radius); padding:22px 24px; max-width:600px; margin-left:auto; margin-right:auto; font-size:.9rem; color:var(--text-mid);">
@@ -718,6 +718,7 @@
   </div>
   <div id="datenschutz-box" style="display:none; margin-top:16px; text-align:left; background:var(--card-bg); border-radius:var(--radius); padding:22px 24px; max-width:600px; margin-left:auto; margin-right:auto; font-size:.9rem; color:var(--text-mid);">
     <h3 style="color:var(--gruen); font-size:1rem; margin-bottom:12px;">Datenschutzerklärung</h3>
+
 
     <p style="font-weight:700; color:var(--text); margin-bottom:2px;">Verantwortlicher</p>
     <p>Marcel Löwenberg<br>Förderverein der Grundschule Euba e.V.<br>Hauptstraße 50 c, 09128 Chemnitz<br>
@@ -777,7 +778,7 @@
       setTimeout(() => box.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
     } else {
       box.style.display = 'none';
-      link.textContent = 'Datenschutz anzeigen';
+      link.textContent = 'Datenschutzerklärung schließen';
     }
   }
 
