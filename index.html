@@ -526,14 +526,11 @@
       <h2>Mitmachen</h2>
       <p>
         Wer den Verein und die Kinder unterstützen möchte, ist bei uns genau richtig.
-        Jetzt online Mitglied werden oder Antrag herunterladen und abgeben.
+        Die Mitgliedschaft startet ab 6 € im Jahr – wähle deinen Beitrag direkt online.
       </p>
-      <a href="https://buy.stripe.com/6oUfZi6HN80na6VcjF8AE01" class="btn-primary" target="_blank" rel="noopener">
-        Online Mitglied werden &rarr;
-      </a>
-      <a href="aufnahmeantrag.docx" class="btn-primary" download style="margin-top:8px; background:#555;">
-        Mitgliedsantrag herunterladen
-      </a>
+      <button class="btn-primary" onclick="showTab('mitgliedschaft', document.querySelector('nav button:nth-child(4)'))">
+        Jetzt Mitglied werden &rarr;
+      </button>
     </div>
 
     <div class="card">
@@ -668,18 +665,38 @@
     <div class="card">
       <h2>Was beinhaltet die Mitgliedschaft?</h2>
       <ul style="margin-top:10px; padding-left:20px; color:var(--text-mid); line-height:2;">
-        <li>Jährlicher Mitgliedsbeitrag ab 6 € (du bestimmst den Betrag)</li>
+        <li>Offizielles Mitglied im Förderverein der Grundschule Euba e.V.</li>
+        <li>Jährlicher Mitgliedsbeitrag ab 6 € – wähle oben deinen Beitrag</li>
         <li>Automatische Abbuchung einmal pro Jahr</li>
-        <li>Bestätigung &amp; Quittung per E-Mail</li>
+        <li>Bestätigung &amp; Zahlungsnachweis per E-Mail</li>
         <li>Mitspracherecht bei der Mitgliederversammlung</li>
         <li>Gutes Gewissen – du hilfst Kindern in Euba</li>
       </ul>
     </div>
 
     <div class="card">
+      <h2>Noch mehr unterstützen?</h2>
+      <p>
+        Wer über den Mitgliedsbeitrag hinaus helfen möchte, kann jederzeit zusätzlich spenden.
+        Jeder Betrag hilft direkt – ob Ausflüge, Materialien oder besondere Aktionen.
+      </p>
+      <a href="https://buy.stripe.com/7sY3cw3vBbcz3Ix5Vh8AE00" class="btn-spenden" target="_blank" rel="noopener">
+        Jetzt spenden
+      </a>
+      <div class="pay-badges">
+        <span>Bezahlen mit:</span>
+        <span class="pay-badge">Apple Pay</span>
+        <span class="pay-badge">Google Pay</span>
+        <span class="pay-badge">Kreditkarte</span>
+        <span class="pay-badge">Debitkarte</span>
+      </div>
+    </div>
+
+    <div class="card">
       <h2>Mitgliedschaft kündigen</h2>
       <p>
-        Du kannst deine Mitgliedschaft jederzeit selbst online kündigen.
+        Du kannst deine Mitgliedschaft jederzeit selbst online kündigen – ganz ohne Papierkram.
+        Melde dich einfach mit deiner E-Mail-Adresse im Mitgliederportal an und kündige dort dein Abo.
         Die Abbuchung stoppt dann automatisch zum nächsten Abrechnungszeitraum.
       </p>
       <a href="https://billing.stripe.com/p/login/7sY3cw3vBbcz3Ix5Vh8AE00" class="btn-primary" target="_blank" rel="noopener" style="background:#888;">
