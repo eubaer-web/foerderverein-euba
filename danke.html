@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Willkommen im Förderverein! – Förderverein GS Euba e.V.</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="icon" href="favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="logo-neu.jpeg">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --gruen: #2e7d32;
+      --gruen-hell: #43a047;
+      --gruen-bg: #e8f5e9;
+      --gelb: #f9a825;
+      --text: #1a1a1a;
+      --text-mid: #444;
+      --text-light: #666;
+      --border: #d0e4d1;
+      --weiss: #ffffff;
+      --radius: 12px;
+      --shadow: 0 2px 12px rgba(0,0,0,.08);
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: var(--text);
+      background: #f4f7f4;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 16px;
+    }
+    .box {
+      background: var(--weiss);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 48px 36px;
+      max-width: 540px;
+      width: 100%;
+      text-align: center;
+    }
+    .checkmark {
+      width: 80px; height: 80px;
+      border-radius: 50%;
+      background: var(--gruen-bg);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 24px;
+    }
+    .checkmark svg {
+      width: 44px; height: 44px;
+    }
+    h1 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--gruen);
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+    p {
+      font-size: .97rem;
+      color: var(--text-mid);
+      line-height: 1.7;
+      margin-bottom: 12px;
+    }
+    .info-box {
+      background: var(--gruen-bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin: 20px 0;
+      text-align: left;
+      font-size: .92rem;
+      color: var(--text-mid);
+    }
+    .info-box strong { color: var(--gruen); }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--gruen);
+      color: var(--weiss);
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-size: .95rem;
+      font-weight: 700;
+      text-decoration: none;
+      margin-top: 20px;
+      transition: background .2s;
+    }
+    .btn:hover { background: var(--gruen-hell); }
+    .logo {
+      width: 80px; height: 80px;
+      object-fit: contain;
+      margin-bottom: 20px;
+    }
+    @media (max-width: 500px) {
+      .box { padding: 32px 20px; }
+      h1 { font-size: 1.35rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <img src="logo-neu.jpeg" alt="Logo" class="logo" />
+
+    <div class="checkmark">
+      <svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="22" cy="22" r="22" fill="#2e7d32"/>
+        <path d="M12 22.5L19.5 30L32 15" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+
+    <h1>Willkommen im Förderverein!</h1>
+
+    <p>Du bist jetzt offiziell Mitglied des Fördervereins der Grundschule Euba e.V. – herzlich willkommen in unserer Gemeinschaft!</p>
+
+    <div class="info-box">
+      <strong>Was passiert als nächstes?</strong><br><br>
+      Du hast soeben eine <strong>Bestätigungs-E-Mail</strong> mit deinem Zahlungsnachweis erhalten. Bitte prüfe auch deinen Spam-Ordner, falls die Mail nicht sofort ankommt.<br><br>
+      Dein Mitgliedsbeitrag wird jährlich automatisch abgebucht. Du kannst deine Mitgliedschaft jederzeit selbst online verwalten oder kündigen.
+    </div>
+
+    <p>Bei Fragen erreichst du uns unter <a href="mailto:fv-gs-euba@goldmail.de" style="color:var(--gruen);font-weight:600;">fv-gs-euba@goldmail.de</a>.</p>
+
+    <a href="index.html" class="btn">Zur Startseite &rarr;</a>
+  </div>
+</body>
+</html>
