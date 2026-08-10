@@ -393,6 +393,36 @@
     }
     .btn-primary:hover { background: var(--gruen-hell); }
 
+    .btn-spenden {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--gelb);
+      color: #1a1a1a;
+      padding: 13px 26px;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 800;
+      text-decoration: none;
+      margin-top: 14px;
+      transition: background .2s;
+      border: none; cursor: pointer;
+    }
+    .btn-spenden:hover { background: #f6b400; }
+    .pay-badges {
+      margin-top: 10px;
+      font-size: .78rem;
+      color: var(--text-light);
+      display: flex; gap: 6px; flex-wrap: wrap; align-items: center;
+    }
+    .pay-badge {
+      background: #f0f0f0;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      padding: 2px 8px;
+      font-size: .73rem;
+      font-weight: 600;
+      color: #333;
+    }
+
     /* ===== FOOTER ===== */
     footer {
       text-align: center;
@@ -493,10 +523,29 @@
       <h2>Mitmachen</h2>
       <p>
         Wer den Verein und die Kinder unterstützen möchte, ist bei uns genau richtig.
+        Einfach Mitgliedsantrag herunterladen, ausfüllen und abgeben – fertig!
       </p>
-      <button class="btn-primary" onclick="showTab('kontakt', document.querySelector('nav button:nth-child(5)'))">
-        Kontakt aufnehmen &rarr;
-      </button>
+      <a href="aufnahmeantrag.docx" class="btn-primary" download>
+        Mitgliedsantrag herunterladen
+      </a>
+    </div>
+
+    <div class="card">
+      <h2>Jetzt spenden</h2>
+      <p>
+        Mit einer Spende unterstützt du direkt Projekte für Kinder und Jugendliche in Euba –
+        ob Ausflüge, Materialien oder besondere Aktionen.
+      </p>
+      <a href="STRIPE_PAYMENT_LINK_HIER_EINTRAGEN" class="btn-spenden" target="_blank" rel="noopener">
+        Jetzt spenden
+      </a>
+      <div class="pay-badges">
+        <span>Bezahlen mit:</span>
+        <span class="pay-badge">Google Pay</span>
+        <span class="pay-badge">Apple Pay</span>
+        <span class="pay-badge">Kreditkarte</span>
+        <span class="pay-badge">Debitkarte</span>
+      </div>
     </div>
   </section>
 
