@@ -664,18 +664,40 @@
       <iframe width="540" height="1000" src="https://73e3e8ba.sibforms.com/v2/serve/MUIFAEvi7Fs5eAnhw-Eao2IUBg8ogkO4eRb_T2GqRuu2Krj6Ekwp4OGyfDILwRIFDgGSKMLTnxEuCz1GYx8ryrIVmMUUx8qjeqnV5juW7JSu6QPrisyQC0aQ2Nzm7Q0z1WC7PC1eFHLDSb-Mo3Uz3JlmeBn8aG7jsHaLZ3yI3voz2CVE0kC_U5mnwqVtLJWlPriHCT1ks34UPOICHA==" frameborder="0" scrolling="auto" allowfullscreen style="display: block;margin-left: auto;margin-right: auto;max-width: 100%;"></iframe>
     </div>
 
-    <div class="card">
-      <h2>Schritt 2: Mitgliedsbeitrag wählen</h2>
-      <p style="margin-bottom: 16px;">
-        Wähle jetzt deinen jährlichen Beitrag und schließe die Anmeldung ab.
+    <div class="card" id="schritt2-locked">
+      <h2>🔒 Schritt 2: Mitgliedsbeitrag wählen</h2>
+      <p>
+        Dieser Schritt wird automatisch freigeschaltet, sobald du die Beitrittserklärung
+        in Schritt 1 abgeschickt hast.
       </p>
     </div>
 
-    <div style="width: 100vw; margin-left: calc(-50vw + 50%); padding: 0 0 8px;">
-      <stripe-pricing-table pricing-table-id="prctbl_1U2sfdK1szBQju9jqFRH3YCO"
-        publishable-key="pk_live_51U2qDUK1szBQju9jKyQjwpdPNXvIgGL90K6kYdkBS8Gpw60d9Grty0QZF8T4AZWKohOkYfELV7dGdwJx63fXxKBo00DpcKQa2V">
-      </stripe-pricing-table>
+    <div id="schritt2-content" style="display:none;">
+      <div class="card">
+        <h2>Schritt 2: Mitgliedsbeitrag wählen</h2>
+        <p style="margin-bottom: 16px;">
+          Danke für deine Beitrittserklärung! Wähle jetzt deinen jährlichen Beitrag und schließe die Anmeldung ab.
+        </p>
+      </div>
+
+      <div style="width: 100vw; margin-left: calc(-50vw + 50%); padding: 0 0 8px;">
+        <stripe-pricing-table pricing-table-id="prctbl_1U2sfdK1szBQju9jqFRH3YCO"
+          publishable-key="pk_live_51U2qDUK1szBQju9jKyQjwpdPNXvIgGL90K6kYdkBS8Gpw60d9Grty0QZF8T4AZWKohOkYfELV7dGdwJx63fXxKBo00DpcKQa2V">
+        </stripe-pricing-table>
+      </div>
     </div>
+
+    <script>
+      (function () {
+        var params = new URLSearchParams(window.location.search);
+        if (params.get('antrag') === 'abgeschlossen') {
+          var locked = document.getElementById('schritt2-locked');
+          var content = document.getElementById('schritt2-content');
+          if (locked) locked.style.display = 'none';
+          if (content) content.style.display = 'block';
+        }
+      })();
+    </script>
 
     <div class="card">
       <h2>Was beinhaltet die Mitgliedschaft?</h2>
