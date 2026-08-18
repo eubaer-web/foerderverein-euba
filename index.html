@@ -207,6 +207,51 @@
     .card p { color: var(--text-mid); margin-bottom: 10px; font-size: .97rem; }
     .card p:last-child { margin-bottom: 0; }
 
+    /* ===== AUFKLAPP-KARTE (Beitrittserklärung) ===== */
+    details.card { padding: 0; overflow: hidden; }
+    details.card summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    details.card summary::-webkit-details-marker { display: none; }
+    details.card summary h2 { margin-bottom: 0; }
+    details.card summary .chevron {
+      flex-shrink: 0;
+      width: 22px; height: 22px;
+      border-radius: 50%;
+      background: var(--gruen-bg);
+      color: var(--gruen);
+      display: flex; align-items: center; justify-content: center;
+      font-size: .9rem;
+      transition: transform .2s;
+    }
+    details.card[open] summary .chevron { transform: rotate(180deg); }
+    details.card .details-body { padding: 0 28px 28px; }
+
+    /* ===== PREISVORSCHAU (gesperrt) ===== */
+    .preis-vorschau {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin: 16px 0 4px;
+    }
+    .preis-chip {
+      flex: 1;
+      min-width: 100px;
+      text-align: center;
+      background: var(--gruen-bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 10px;
+    }
+    .preis-chip .betrag { font-weight: 800; color: var(--gruen); font-size: 1.15rem; }
+    .preis-chip .label { font-size: .8rem; color: var(--text-light); margin-top: 2px; }
+
     /* ===== NEWS / AKTUELLES ===== */
     .news-date {
       display: inline-block;
@@ -656,20 +701,30 @@
       </p>
     </div>
 
-    <div class="card">
-      <h2>Schritt 1: Beitrittserklärung</h2>
-      <p style="margin-bottom: 16px;">
-        Bitte fülle zunächst deine Angaben aus und erkenne die Satzung an.
-      </p>
-      <iframe width="540" height="1000" src="https://73e3e8ba.sibforms.com/v2/serve/MUIFAEvi7Fs5eAnhw-Eao2IUBg8ogkO4eRb_T2GqRuu2Krj6Ekwp4OGyfDILwRIFDgGSKMLTnxEuCz1GYx8ryrIVmMUUx8qjeqnV5juW7JSu6QPrisyQC0aQ2Nzm7Q0z1WC7PC1eFHLDSb-Mo3Uz3JlmeBn8aG7jsHaLZ3yI3voz2CVE0kC_U5mnwqVtLJWlPriHCT1ks34UPOICHA==" frameborder="0" scrolling="auto" allowfullscreen style="display: block;margin-left: auto;margin-right: auto;max-width: 100%;"></iframe>
-    </div>
+    <details class="card" open>
+      <summary>
+        <h2>Schritt 1: Beitrittserklärung</h2>
+        <span class="chevron">▾</span>
+      </summary>
+      <div class="details-body">
+        <p style="margin-bottom: 16px;">
+          Bitte fülle zunächst deine Angaben aus und erkenne die Satzung an.
+        </p>
+        <iframe width="540" height="1000" src="https://73e3e8ba.sibforms.com/v2/serve/MUIFAEvi7Fs5eAnhw-Eao2IUBg8ogkO4eRb_T2GqRuu2Krj6Ekwp4OGyfDILwRIFDgGSKMLTnxEuCz1GYx8ryrIVmMUUx8qjeqnV5juW7JSu6QPrisyQC0aQ2Nzm7Q0z1WC7PC1eFHLDSb-Mo3Uz3JlmeBn8aG7jsHaLZ3yI3voz2CVE0kC_U5mnwqVtLJWlPriHCT1ks34UPOICHA==" frameborder="0" scrolling="auto" allowfullscreen style="display: block;margin-left: auto;margin-right: auto;max-width: 100%;"></iframe>
+      </div>
+    </details>
 
     <div class="card" id="schritt2-locked">
       <h2>🔒 Schritt 2: Mitgliedsbeitrag wählen</h2>
       <p>
-        Dieser Schritt wird automatisch freigeschaltet, sobald du die Beitrittserklärung
-        in Schritt 1 abgeschickt hast.
+        Diese Beträge stehen zur Auswahl – die Anmeldung selbst wird freigeschaltet,
+        sobald du die Beitrittserklärung in Schritt 1 abgeschickt hast.
       </p>
+      <div class="preis-vorschau">
+        <div class="preis-chip"><div class="betrag">6 €</div><div class="label">pro Jahr</div></div>
+        <div class="preis-chip"><div class="betrag">24 €</div><div class="label">pro Jahr</div></div>
+        <div class="preis-chip"><div class="betrag">60 €</div><div class="label">pro Jahr</div></div>
+      </div>
     </div>
 
     <div id="schritt2-content" style="display:none;">
