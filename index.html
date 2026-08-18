@@ -197,6 +197,11 @@
       margin-bottom: 14px;
     }
 
+    .schritt-label {
+      display: inline-block;
+      min-width: 82px;
+    }
+
     .card h3 {
       font-size: 1rem;
       font-weight: 700;
@@ -212,13 +217,12 @@
     details.card summary {
       list-style: none;
       cursor: pointer;
-      padding: 14px 20px;
+      padding: 28px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 12px;
     }
-    details.card summary h2 { font-size: 1.05rem; }
     details.card summary::-webkit-details-marker { display: none; }
     details.card summary h2 { margin-bottom: 0; }
     details.card summary .chevron {
@@ -704,7 +708,7 @@
 
     <details class="card">
       <summary>
-        <h2>Schritt 1: Beitrittserklärung</h2>
+        <h2><span class="schritt-label">Schritt 1:</span> Beitrittserklärung</h2>
         <span class="chevron">▾</span>
       </summary>
       <div class="details-body">
@@ -716,7 +720,7 @@
     </details>
 
     <div class="card" id="schritt2-locked">
-      <h2>🔒 Schritt 2: Mitgliedsbeitrag wählen</h2>
+      <h2>🔒 <span class="schritt-label">Schritt 2:</span> Mitgliedsbeitrag wählen</h2>
       <p>
         Diese Beträge stehen zur Auswahl – die Anmeldung selbst wird freigeschaltet,
         sobald du die Beitrittserklärung in Schritt 1 abgeschickt hast.
@@ -730,7 +734,7 @@
 
     <div id="schritt2-content" style="display:none;">
       <div class="card">
-        <h2>Schritt 2: Mitgliedsbeitrag wählen</h2>
+        <h2><span class="schritt-label">Schritt 2:</span> Mitgliedsbeitrag wählen</h2>
         <p style="margin-bottom: 16px;">
           Danke für deine Beitrittserklärung! Wähle jetzt deinen jährlichen Beitrag und schließe die Anmeldung ab.
         </p>
